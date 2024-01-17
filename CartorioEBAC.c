@@ -127,7 +127,8 @@ int main(){
 		printf(" Escolha a opção do menu:\n\n");
 		printf("  1 - Registrar nomes:\n");
 		printf("  2 - Consultar nomes: \n");
-		printf("  3 - Deletar nomes: \n\n");
+		printf("  3 - Deletar nomes: \n");
+		printf("  4 - Sair do programa: \n\n ");
 		printf("  Qual opção você deseja: ");
 	
 		scanf("%d", &opcao);//armazenando a opção do variavel
@@ -147,6 +148,11 @@ int main(){
 				deletar();//chamada da função deletar
 			break;
 			
+			case 4: 
+				printf("Obrigado por utilizar o sistema!\n");
+				return 0; //sair do programa 
+				break;
+				
 			default:
 				printf("Opção indisponível!\n");
 				system("pause");//Pausar tela
