@@ -15,49 +15,48 @@ int registro(){//Função para registro
 	
 	printf("\nDigite o CPF a ser cadastrado: ");//coletando informações do usuário
 	scanf("%s", cpf); //%s refere a string
+
+	FILE *file;
+	file = fopen(cpf, "r");//abrir o arquivo para ler
+
+	if(file == NULL){
+		strcpy(arquivo, cpf); // função responsável por copiar os valores da string
 	
-	strcpy(arquivo, cpf); // função responsável por copiar os valores da string
+		FILE *file; //cria o arquivo
+		file = fopen(arquivo, "w");//abre o arquivo para escrita
+		fprintf(file, "\nCPF: ");
+		fprintf(file,cpf); //salva o valor da variavel
+		fclose(file);//fecha o arquivo
 	
-	FILE *file; //cria o arquivo
-	file = fopen(arquivo, "w");//abre o arquivo para escrita
-	fprintf(file,cpf); //salva o valor da variavel
-	fclose(file);//fecha o arquivo
+		printf("Digite o nome a ser cadastrado: ");
+		scanf("%s", nome);
 	
-	file = fopen(arquivo, "a");//abre o arquivo para atualizar
-	fprintf(file, ", ");
-	fclose(file);
+		file = fopen(arquivo, "a");
+		fprintf(file, "\nNome: ");
+		fprintf(file, nome);
+		fclose(file);
 	
-	printf("Digite o nome a ser cadastrado: ");
-	scanf("%s", nome);
+		printf("Digite o sobrenome a ser cadastrado: ");
+		scanf("%s", sobrenome);
 	
-	file = fopen(arquivo, "a");
-	fprintf(file, nome);
-	fclose(file);
+		file = fopen(arquivo, "a");
+		fprintf(file, "\nSobrenome: ");
+		fprintf(file, sobrenome);
+		fclose(file);
 	
-	file = fopen(arquivo, "a");
-	fprintf(file, ", ");
-	fclose(file);
+		printf("Digite o cargo a ser cadastrado: ");
+		scanf("%s", cargo);
 	
-	printf("Digite o sobrenome a ser cadastrado: ");
-	scanf("%s", sobrenome);
+		file = fopen(arquivo, "a");
+		fprintf(file, "\nCargo: ");
+		fprintf(file, cargo);
+		fclose(file);	
+	}
+	else{
+		printf("\nCPF já cadastrado\n");
+	}
 	
-	file = fopen(arquivo, "a");
-	fprintf(file, sobrenome);
-	fclose(file);
-	
-	file = fopen(arquivo, "a");
-	fprintf(file, ", ");
-	fclose(file);
-	
-	printf("Digite o cargo a ser cadastrado: ");
-	scanf("%s", cargo);
-	
-	file = fopen(arquivo, "a");
-	fprintf(file, cargo);
-	fclose(file);
-	
-	printf("\n");
-	
+	printf("\n");	
 	system("pause");//Pausar tela
 }
 
@@ -77,13 +76,16 @@ int consulta(){//função para cosulta
 	file = fopen(cpf, "r");//abrir o arquivo para ler
 	
 	if(file == NULL){//quando o arquivo é nulo
-		printf("\nNão localizado! \n\n");
+		printf("\nNão localizado! ");
 	}
-	
-	while(fgets(conteudo, 200, file) != NULL){//armazena as informações do file em conteudo até acabar as informações
-		printf("\nEssas são as informações do usuário: ");
-		printf("%s\n\n", conteudo);
+	else{
+		printf("\nEssas são as informações do usuário: \n");
+		
+		while(fgets(conteudo, 200, file) != NULL){//armazena as informações do file em conteudo até acabar as informações
+			printf("%s", conteudo);
+		}
 	}
+	printf("\n\n");
 	fclose(file);
 	system("pause");//Pausar tela
 }
