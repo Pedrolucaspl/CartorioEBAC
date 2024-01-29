@@ -113,7 +113,7 @@ int deletar(){//função para deletar
 
 int main(){
 	
-	int opcao = 0; //definindo a variavel para opcao do menu
+	char opcao; //definindo a variavel para opcao do menu
 	int laco=1; //definindo variavel laço 
 	char senhadigitada[10]="a";//definindo variavel para senha
 	int comparacao;//definindo variavel para comparar a senha digitada
@@ -143,24 +143,24 @@ int main(){
 			printf("  4 - Sair do programa: \n\n ");
 			printf("  Qual opção você deseja: ");
 		
-			scanf("%d", &opcao);//armazenando a opção do variavel
+			scanf(" %c", &opcao);//armazenando a opção do variavel
 	
 			system("cls"); //Limpar a tela
 		
 			switch(opcao){ //Inicio da seleção
-				case 1:
+				case '1':
 					registro();	//chamada da função registro
 				break;
 			
-				case 2:
+				case '2':
 					consulta();//chamada da função consulta
 				break;
 			
-				case 3:
+				case '3':
 					deletar();//chamada da função deletar
 				break;
 			
-				case 4: 
+				case '4': 
 					printf("Obrigado por utilizar o sistema!\n");
 					return 0; //sair do programa 
 				break;
